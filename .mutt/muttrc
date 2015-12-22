@@ -44,8 +44,6 @@ set sort=threads
 
 set narrow_tree
 
-#?set query_command
-
 # use notmuch-mutt (https://notmuchmail.org/notmuch-mutt/) to search for mail
 # available in Debian as notmuch-mutt
 # available in Fedora as notmuch-mutt
@@ -69,6 +67,14 @@ macro index <F6> \
 <pipe-message>notmuch-mutt tag -- -inbox<enter>\
 <enter-command>set pipe_decode=\$my_old_pipe_decode wait_key=\$my_old_wait_key<enter>" \
       "notmuch: remove message from inbox"
+
+# use goobook (https://gitlab.com/goobook/goobook)
+# available in Debian as goobook
+# available in Fedora as goobook
+
+set query_command="goobook query '%s'"
+bind editor <Tab> complete-query
+macro index,pager a "<pipe-message>goobook add<return>" "add the sender address to Google contacts"
 
 # use solarized theme from https://github.com/altercation/solarized/tree/master/mutt-colors-solarized
 
