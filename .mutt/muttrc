@@ -13,6 +13,10 @@ set beep_new
 
 set pipe_split
 
+# needs the sidebar.patch from http://www.lunar-linux.org/mutt-sidebar/
+# available in Debian as "mutt-patched"
+# available for Fedora at https://copr.fedoraproject.org/coprs/evgeni/mutt-patched/
+
 set sidebar_width=20
 #set sidebar_sort
 set sidebar_shortpath
@@ -39,12 +43,31 @@ set narrow_tree
 
 #?set query_command
 
-# 'L' performs a notmuch query, showing only the results
-macro index L "<enter-command>unset wait_key<enter><shell-escape>read -p 'notmuch query: ' x; echo \$x >~/.cache/mutt_terms<enter><limit>~i \"\`notmuch search --output=messages \$(cat ~/.cache/mutt_terms) | head -n 600 | perl -le '@a=<>;chomp@a;s/\^id:// for@a;$,=\"|\";print@a'\`\"<enter>" "show only messages matching a notmuch pattern"
-# 'a' shows all messages again (supersedes default <alias> binding)
-macro index a "<limit>all\n" "show all messages (undo limit)"
-macro index <F8> "<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt --prompt search<enter><change-folder-readonly>~/.cache/notmuch/mutt/results/<enter>" "search mail (using notmuch)"
-macro index <F9> "<enter-command>unset wait_key<enter><pipe-message>notmuch-mutt thread<enter><change-folder-readonly>~/.cache/mutt_results<enter><enter-command>set wait_key<enter>" "search and reconstruct owning thread (using notmuch)"
+# use notmuch-mutt (https://notmuchmail.org/notmuch-mutt/) to search for mail
+# available in Debian as notmuch-mutt
+# available in Fedora as notmuch-mutt
+
+macro index <F8> \
+"<enter-command>set my_old_pipe_decode=\$pipe_decode my_old_wait_key=\$wait_key nopipe_decode nowait_key<enter>\
+<shell-escape>notmuch-mutt -r --prompt search<enter>\
+<change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter>\
+<enter-command>set pipe_decode=\$my_old_pipe_decode wait_key=\$my_old_wait_key<enter>" \
+      "notmuch: search mail"
+
+macro index <F9> \
+"<enter-command>set my_old_pipe_decode=\$pipe_decode my_old_wait_key=\$wait_key nopipe_decode nowait_key<enter>\
+<pipe-message>notmuch-mutt -r thread<enter>\
+<change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter>\
+<enter-command>set pipe_decode=\$my_old_pipe_decode wait_key=\$my_old_wait_key<enter>" \
+      "notmuch: reconstruct thread"
+
+macro index <F6> \
+"<enter-command>set my_old_pipe_decode=\$pipe_decode my_old_wait_key=\$wait_key nopipe_decode nowait_key<enter>\
+<pipe-message>notmuch-mutt tag -- -inbox<enter>\
+<enter-command>set pipe_decode=\$my_old_pipe_decode wait_key=\$my_old_wait_key<enter>" \
+      "notmuch: remove message from inbox"
+
+# use solarized theme from https://github.com/altercation/solarized/tree/master/mutt-colors-solarized
 
 source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc
 
