@@ -13,6 +13,9 @@ set beep_new
 
 set pipe_split
 
+auto_view text/html
+alternative_order text/enriched text/plain text
+
 # needs the sidebar.patch from http://www.lunar-linux.org/mutt-sidebar/
 # available in Debian as "mutt-patched"
 # available for Fedora at https://copr.fedoraproject.org/coprs/evgeni/mutt-patched/
