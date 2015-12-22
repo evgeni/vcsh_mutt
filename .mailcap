@@ -1,0 +1,3 @@
+application/*; XDG_CURRENT_DESKTOP=X-Generic DE=generic xdg-open "%s"
+audio/*; XDG_CURRENT_DESKTOP=X-Generic DE=generic xdg-open "%s"
+image/*; XDG_CURRENT_DESKTOP=X-Generic DE=generic xdg-open "%s"

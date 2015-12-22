@@ -1,0 +1,62 @@
+set reverse_name  
+
+set header_cache="~/.cache/mutt/headers"
+set message_cachedir="~/.cache/mutt/bodies"
+set certificate_file=~/.mutt/certificates
+
+set mail_check=90
+set timeout=15
+
+set rfc2047_parameters
+
+set beep_new
+
+set pipe_split
+
+set sidebar_width=20
+#set sidebar_sort
+set sidebar_shortpath
+set sidebar_folderindent
+set sidebar_visible
+# ctrl-n, ctrl-p to select next, prev folder 
+# ctrl-o to open selected folder 
+bind index \Cp sidebar-prev 
+bind index \Cn sidebar-next 
+bind index \Co sidebar-open 
+bind pager \Cp sidebar-prev 
+bind pager \Cn sidebar-next 
+bind pager \Co sidebar-open
+
+# b toggles sidebar visibility
+#macro index \Cb ':toggle sidebar_visible^M'
+#macro pager \Cb ':toggle sidebar_visible^M'
+macro index \Cb '<enter-command>toggle sidebar_visible<enter><refresh>'
+macro pager \Cb '<enter-command>toggle sidebar_visible<enter><redraw-screen>' 
+
+set sort=threads
+
+set narrow_tree
+
+#?set query_command
+
+# 'L' performs a notmuch query, showing only the results
+macro index L "<enter-command>unset wait_key<enter><shell-escape>read -p 'notmuch query: ' x; echo \$x >~/.cache/mutt_terms<enter><limit>~i \"\`notmuch search --output=messages \$(cat ~/.cache/mutt_terms) | head -n 600 | perl -le '@a=<>;chomp@a;s/\^id:// for@a;$,=\"|\";print@a'\`\"<enter>" "show only messages matching a notmuch pattern"
+# 'a' shows all messages again (supersedes default <alias> binding)
+macro index a "<limit>all\n" "show all messages (undo limit)"
+macro index <F8> "<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt --prompt search<enter><change-folder-readonly>~/.cache/notmuch/mutt/results/<enter>" "search mail (using notmuch)"
+macro index <F9> "<enter-command>unset wait_key<enter><pipe-message>notmuch-mutt thread<enter><change-folder-readonly>~/.cache/mutt_results<enter><enter-command>set wait_key<enter>" "search and reconstruct owning thread (using notmuch)"
+
+source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc
+
+# account specific settings
+set mbox_type=Maildir
+set folder="~/Mail/redhat"
+set spoolfile="=INBOX"
+mailboxes `find ~/Mail/redhat -type d -name cur -printf '%h \0' |LC_COLLATE=C sort -z| xargs -0`
+#mailboxes `find ~/Mail/ -type d -name cur -printf '%h '`
+set record="=Sent"
+set postponed="=Drafts"
+set from=egolov@redhat.com
+alternates (egolov|evgeni|evgeni.golov)@redhat.com
+
+set signature=~/.mutt/signature.redhat
