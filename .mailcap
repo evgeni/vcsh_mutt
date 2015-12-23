@@ -1,4 +1,4 @@
-text/html; w3m -T text/html %s; copiousoutput
+text/html; w3m -I %{charset} -dump -T text/html %s; copiousoutput
 application/*; XDG_CURRENT_DESKTOP=X-Generic DE=generic xdg-open %s
 audio/*; XDG_CURRENT_DESKTOP=X-Generic DE=generic xdg-open %s
 image/*; XDG_CURRENT_DESKTOP=X-Generic DE=generic xdg-open %s
