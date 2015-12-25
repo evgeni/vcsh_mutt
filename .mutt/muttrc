@@ -1,3 +1,17 @@
+ignore headers *
+unignore headers from to subject date cc
+hdr_order from to cc subject date
+
+
+set mime_forward=yes
+set mime_forward_rest=yes
+
+set hide_missing=no
+
+set pager_index_lines=10
+
+set pgp_use_gpg_agent = yes
+
 set reverse_name  
 
 set header_cache="~/.cache/mutt/headers"
@@ -13,8 +27,19 @@ set beep_new
 
 set pipe_split
 
+set sort=threads
+
+set narrow_tree
+
 auto_view text/html
 alternative_order text/enriched text/plain text
+
+# usefull shortcuts
+macro index .n "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<clear-flag>*" "Catchup all new messages"
+macro index .o "<tag-pattern>~O<enter><tag-prefix><clear-flag>O<clear-flag>*" "Catchup all old messages"
+
+macro index S "<tag-prefix><save-message>=muell.newspam<enter>" "file as Spam"
+macro pager S "<save-message>=muell.newspam<enter>" "file as Spam"
 
 # needs the sidebar.patch from http://www.lunar-linux.org/mutt-sidebar/
 # available in Debian as "mutt-patched"
@@ -39,10 +64,6 @@ bind pager \Co sidebar-open
 #macro pager \Cb ':toggle sidebar_visible^M'
 macro index \Cb '<enter-command>toggle sidebar_visible<enter><refresh>'
 macro pager \Cb '<enter-command>toggle sidebar_visible<enter><redraw-screen>' 
-
-set sort=threads
-
-set narrow_tree
 
 # use notmuch-mutt (https://notmuchmail.org/notmuch-mutt/) to search for mail
 # available in Debian as notmuch-mutt
