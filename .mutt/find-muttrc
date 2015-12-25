@@ -1,0 +1,13 @@
+#!/bin/sh
+
+muttrc=default
+case $(hostname -f) in
+  *.die-welt.net)
+    muttrc=die-welt.net
+    ;;
+  *.redhat.com)
+    muttrc=redhat.com
+    ;;
+esac
+
+echo "source ~/.mutt/muttrc-${muttrc}"
