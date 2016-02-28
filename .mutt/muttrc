@@ -10,7 +10,7 @@ set hide_missing=no
 
 set pager_index_lines=10
 
-set pgp_use_gpg_agent = yes
+#set pgp_use_gpg_agent = yes
 
 set reverse_name  
 
@@ -30,6 +30,8 @@ set pipe_split
 set sort=threads
 
 set narrow_tree
+
+set maildir_trash
 
 auto_view text/html
 alternative_order text/enriched text/plain text
@@ -99,7 +101,8 @@ macro index,pager a "<pipe-message>goobook add<return>" "add the sender address 
 
 # use solarized theme from https://github.com/altercation/solarized/tree/master/mutt-colors-solarized
 
-source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc
+#source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc
+source ~/Devel/solarized/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc
 
 # account specific settings
 source ~/.mutt/find-muttrc|
