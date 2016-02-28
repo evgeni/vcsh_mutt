@@ -1,0 +1,16 @@
+MaildirStore die-welt.net-local
+Path ~/Mail/die-welt.net/
+Inbox ~/Mail/die-welt.net/INBOX
+Flatten .
+
+IMAPStore die-welt.net-imap
+Host mail.die-welt.net
+User sargentd@die-welt.net
+
+Channel die-welt.net
+Master :die-welt.net-imap:
+Slave  :die-welt.net-local:
+Patterns * INBOX !dovecot/sieve
+Create Both
+SyncState *
+Expunge Both
