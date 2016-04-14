@@ -99,6 +99,15 @@ set query_command="goobook query '%s'"
 bind editor <Tab> complete-query
 macro index,pager a "<pipe-message>goobook add<return>" "add the sender address to Google contacts"
 
+# nicer coloring for diffs
+color body green black "^diff \-.*"
+color body green black "^index [a-f0-9].*"
+color body green black "^\-\-\- .*"
+color body green black "^[\+]{3} .*"
+color body cyan black "^[\+][^\+]+.*"
+color body red  black "^\-[^\-]+.*"
+color body brightblue black "^@@ .*"
+
 # use solarized theme from https://github.com/altercation/solarized/tree/master/mutt-colors-solarized
 
 #source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc
