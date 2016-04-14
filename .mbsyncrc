@@ -1,16 +1,103 @@
-MaildirStore die-welt.net-local
+# Save the synchronization state files in the relevant directory
+SyncState *
+Create Both
+
+IMAPAccount die-welt.net
+Host mail.die-welt.net
+User sargentd@die-welt.net
+Pass password 
+SSLType STARTTLS
+
+IMAPStore die-welt.net-remote
+Account die-welt.net
+
+MailDirStore die-welt.net-local
 Path ~/Mail/die-welt.net/
 Inbox ~/Mail/die-welt.net/INBOX
 Flatten .
 
-IMAPStore die-welt.net-imap
-Host mail.die-welt.net
-User sargentd@die-welt.net
-
 Channel die-welt.net
-Master :die-welt.net-imap:
+Master :die-welt.net-remote:
 Slave  :die-welt.net-local:
 Patterns * INBOX !dovecot/sieve
+Expunge Both
+
+IMAPAccount redhat
+Host mail.corp.redhat.com
+User egolov@REDHAT.COM
+AuthMechs GSSAPI
+SSLType IMAPS
+CertificateFile ~/.cert/redhat-newca.crt
+
+IMAPStore redhat-remote
+Account redhat
+
+MailDirStore redhat-local
+Path ~/Mail/redhat/
+Inbox ~/Mail/redhat/INBOX
+Flatten .
+
+Channel redhat
+Master :redhat-remote:
+Slave :redhat-local:
+Patterns *
+# Automatically create missing mailboxes, both locally and on the server
 Create Both
+# Save the synchronization state files in the relevant directory
+SyncState *
+#Expunge Both
+
+IMAPAccount redhat-gmail
+Host imap.gmail.com
+User egolov@redhat.com
+Pass password
+SSLType IMAPS
+
+IMAPStore redhat-gmail-remote
+Account redhat-gmail
+
+MaildirStore redhat-gmail-local
+Path ~/Mail/redhat-gmail/
+Inbox ~/Mail/redhat-gmail/INBOX
+Flatten .
+
+Channel redhat-gmail-default
+Master :redhat-gmail-remote:
+Slave :redhat-gmail-local:
+# Exclude everything under the internal [Gmail] folder, also exclude the mapping folders
+Patterns * ![Gmail]* !Drafts !Sent !Trash
+# Automatically create missing mailboxes, both locally and on the server
+Create Both
+# Save the synchronization state files in the relevant directory
 SyncState *
 Expunge Both
+
+# transform magic [Gmail] folders to something more useful ;-)
+# [Gmail]/All Mail
+# [Gmail]/Drafts
+# [Gmail]/Important
+# [Gmail]/Sent Mail
+# [Gmail]/Spam
+# [Gmail]/Starred
+# [Gmail]/Trash
+
+Channel redhat-gmail-drafts
+Master :redhat-gmail-remote:"[Gmail]/Drafts"
+Slave :redhat-gmail-local:Drafts
+Expunge Both
+
+Channel redhat-gmail-sent
+Master :redhat-gmail-remote:"[Gmail]/Sent Mail"
+Slave :redhat-gmail-local:Sent
+Expunge Both
+
+Channel redhat-gmail-trash
+Master :redhat-gmail-remote:"[Gmail]/Trash"
+Slave :redhat-gmail-local:Trash
+
+# Get all the channels together into a group.
+Group redhat-gmail
+Channel redhat-gmail-default
+Channel redhat-gmail-drafts
+Channel redhat-gmail-sent
+Channel redhat-gmail-trash
