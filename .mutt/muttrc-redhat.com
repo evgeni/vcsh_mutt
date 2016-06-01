@@ -5,7 +5,7 @@ mailboxes `find ~/Mail/redhat -type d -name cur -printf '%h \0' |LC_COLLATE=C so
 #mailboxes `find ~/Mail/ -type d -name cur -printf '%h '`
 set record="=Sent"
 set postponed="=Drafts"
-set from=egolov@redhat.com
+set from=evgeni@redhat.com
 alternates (egolov|evgeni|evgeni.golov)@redhat.com
 
 set signature=~/.mutt/signature.redhat
