@@ -57,6 +57,10 @@ set sidebar_indent_string=' '
 # this is U+2502 BOX DRAWINGS LIGHT VERTICAL
 set sidebar_divider_char='│'
 set sidebar_visible
+
+set mail_check_stats=yes
+set sidebar_format="%B%*  %S%?N?(%N)?%?F?[%F]?"
+
 # ctrl-n, ctrl-p to select next, prev folder 
 # ctrl-o to open selected folder 
 bind index \Cp sidebar-prev 
@@ -98,6 +102,8 @@ macro index <F6> \
 <enter-command>set pipe_decode=\$my_old_pipe_decode wait_key=\$my_old_wait_key<enter>" \
       "notmuch: remove message from inbox"
 
+
+set nm_default_uri=notmuch:///home/remote/egolov/Mail//
 # use goobook (https://gitlab.com/goobook/goobook)
 # available in Debian as goobook
 # available in Fedora as goobook
