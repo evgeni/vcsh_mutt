@@ -121,6 +121,8 @@ color body cyan default "^[\+][^\+]+.*"
 color body red  default "^\-[^\-]+.*"
 color body brightblue default "^@@ .*"
 
+set status_format="─%r─Mutt: %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b?%?l? %l?]───(%s/%S)─%>─(%P)───"
+
 # use solarized theme from https://github.com/altercation/solarized/tree/master/mutt-colors-solarized
 
 #source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc
