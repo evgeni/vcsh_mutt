@@ -9,4 +9,5 @@ set from=evgeni@redhat.com
 alternates (egolov|evgeni|evgeni.golov)@redhat.com
 
 set signature=~/.mutt/signature.redhat
+set sendmail='/usr/sbin/sendmail -oem -oi -f evgeni@redhat.com'
 
