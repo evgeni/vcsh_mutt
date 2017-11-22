@@ -38,6 +38,8 @@ auto_view text/html
 alternative_order text/enriched text/plain text
 
 # usefull shortcuts
+# . is by default bound to buffy-list, but I use the sidebar anyways
+bind index . noop
 macro index .n "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<clear-flag>*" "Catchup all new messages"
 macro index .o "<tag-pattern>~O<enter><tag-prefix><clear-flag>O<clear-flag>*" "Catchup all old messages"
 

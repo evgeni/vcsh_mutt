@@ -7,6 +7,7 @@ Host mail.die-welt.net
 User sargentd@die-welt.net
 Pass password 
 SSLType STARTTLS
+SSLVersions TLSv1.2
 
 IMAPStore die-welt.net-remote
 Account die-welt.net
