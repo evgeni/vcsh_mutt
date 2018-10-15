@@ -23,31 +23,6 @@ Slave  :die-welt.net-local:
 Patterns * INBOX !dovecot/sieve
 Expunge Both
 
-IMAPAccount redhat
-Host mail.corp.redhat.com
-User egolov@REDHAT.COM
-AuthMechs GSSAPI
-SSLType IMAPS
-CertificateFile ~/.cert/redhat-newca.crt
-
-IMAPStore redhat-remote
-Account redhat
-
-MailDirStore redhat-local
-Path ~/Mail/redhat/
-Inbox ~/Mail/redhat/INBOX
-Flatten .
-
-Channel redhat
-Master :redhat-remote:
-Slave :redhat-local:
-Patterns *
-# Automatically create missing mailboxes, both locally and on the server
-Create Both
-# Save the synchronization state files in the relevant directory
-SyncState *
-#Expunge Both
-
 IMAPAccount redhat-gmail
 Host imap.gmail.com
 User egolov@redhat.com
