@@ -23,23 +23,23 @@ Slave  :die-welt.net-local:
 Patterns * INBOX !dovecot/sieve
 Expunge Both
 
-IMAPAccount redhat-gmail
+IMAPAccount redhat.com
 Host imap.gmail.com
 User egolov@redhat.com
 Pass password
 SSLType IMAPS
 
-IMAPStore redhat-gmail-remote
-Account redhat-gmail
+IMAPStore redhat.com-remote
+Account redhat.com
 
-MaildirStore redhat-gmail-local
-Path ~/Mail/redhat-gmail/
-Inbox ~/Mail/redhat-gmail/INBOX
+MaildirStore redhat.com-local
+Path ~/Mail/redhat.com/
+Inbox ~/Mail/redhat.com/INBOX
 Flatten .
 
-Channel redhat-gmail-default
-Master :redhat-gmail-remote:
-Slave :redhat-gmail-local:
+Channel redhat.com-default
+Master :redhat.com-remote:
+Slave :redhat.com-local:
 # Exclude everything under the internal [Gmail] folder, also exclude the mapping folders
 Patterns * ![Gmail]* !Drafts !Sent !Trash
 # Automatically create missing mailboxes, both locally and on the server
@@ -57,23 +57,23 @@ Expunge Both
 # [Gmail]/Starred
 # [Gmail]/Trash
 
-Channel redhat-gmail-drafts
-Master :redhat-gmail-remote:"[Gmail]/Drafts"
-Slave :redhat-gmail-local:Drafts
+Channel redhat.com-drafts
+Master :redhat.com-remote:"[Gmail]/Drafts"
+Slave :redhat.com-local:Drafts
 Expunge Both
 
-Channel redhat-gmail-sent
-Master :redhat-gmail-remote:"[Gmail]/Sent Mail"
-Slave :redhat-gmail-local:Sent
+Channel redhat.com-sent
+Master :redhat.com-remote:"[Gmail]/Sent Mail"
+Slave :redhat.com-local:Sent
 Expunge Both
 
-Channel redhat-gmail-trash
-Master :redhat-gmail-remote:"[Gmail]/Trash"
-Slave :redhat-gmail-local:Trash
+Channel redhat.com-trash
+Master :redhat.com-remote:"[Gmail]/Trash"
+Slave :redhat.com-local:Trash
 
 # Get all the channels together into a group.
-Group redhat-gmail
-Channel redhat-gmail-default
-Channel redhat-gmail-drafts
-Channel redhat-gmail-sent
-Channel redhat-gmail-trash
+Group redhat.com
+Channel redhat.com-default
+Channel redhat.com-drafts
+Channel redhat.com-sent
+Channel redhat.com-trash
