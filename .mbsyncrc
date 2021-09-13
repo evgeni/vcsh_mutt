@@ -18,8 +18,8 @@ Inbox ~/Mail/die-welt.net/INBOX
 Flatten .
 
 Channel die-welt.net
-Master :die-welt.net-remote:
-Slave  :die-welt.net-local:
+Far :die-welt.net-remote:
+Near  :die-welt.net-local:
 Patterns * INBOX !dovecot/sieve
 Expunge Both
 
@@ -38,8 +38,8 @@ Inbox ~/Mail/redhat.com/INBOX
 Flatten .
 
 Channel redhat.com-default
-Master :redhat.com-remote:
-Slave :redhat.com-local:
+Far :redhat.com-remote:
+Near :redhat.com-local:
 # Exclude everything under the internal [Gmail] folder, also exclude the mapping folders
 Patterns * ![Gmail]* !Drafts !Sent !Trash
 # Automatically create missing mailboxes, both locally and on the server
@@ -58,18 +58,18 @@ Expunge Both
 # [Gmail]/Trash
 
 Channel redhat.com-drafts
-Master :redhat.com-remote:"[Gmail]/Drafts"
-Slave :redhat.com-local:Drafts
+Far :redhat.com-remote:"[Gmail]/Drafts"
+Near :redhat.com-local:Drafts
 Expunge Both
 
 Channel redhat.com-sent
-Master :redhat.com-remote:"[Gmail]/Sent Mail"
-Slave :redhat.com-local:Sent
+Far :redhat.com-remote:"[Gmail]/Sent Mail"
+Near :redhat.com-local:Sent
 Expunge Both
 
 Channel redhat.com-trash
-Master :redhat.com-remote:"[Gmail]/Trash"
-Slave :redhat.com-local:Trash
+Far :redhat.com-remote:"[Gmail]/Trash"
+Near :redhat.com-local:Trash
 
 # Get all the channels together into a group.
 Group redhat.com
