@@ -1,12 +1,9 @@
 #!/bin/sh
 
-muttrc=default
+muttrc=die-welt.net
 case $(hostname -f) in
   *.die-welt.net)
     muttrc=die-welt.net
-    ;;
-  *.redhat.com)
-    muttrc=redhat.com
     ;;
 esac
 
