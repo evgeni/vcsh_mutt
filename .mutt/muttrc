@@ -111,7 +111,7 @@ macro index <F6> \
       "notmuch: remove message from inbox"
 
 
-set nm_default_uri=notmuch:///home/remote/egolov/Mail//
+set nm_default_uri=notmuch:///home/evgeni/Mail/
 # use goobook (https://gitlab.com/goobook/goobook)
 # available in Debian as goobook
 # available in Fedora as goobook
