@@ -8,4 +8,4 @@ set from=evgeni@golov.de
 alternates (evgeni@(grml.org|debian.org|golov.(de|eu))|sargentd@(die-welt|sargentd).net|evgeni.golov@uni-duesseldorf.de)
 
 set signature=~/.mutt/signature.die-welt.net
-set sendmail='/usr/sbin/sendmail -oem -oi -f evgeni@golov.de'
+set envelope_from=yes
