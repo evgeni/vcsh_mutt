@@ -5,9 +5,9 @@ Create Both
 IMAPAccount die-welt.net
 Host mail.die-welt.net
 User sargentd@die-welt.net
-Pass password 
-SSLType STARTTLS
-SSLVersions TLSv1.2
+Pass password
+TLSType STARTTLS
+TLSVersions +1.3 -1.0 -1.1 -1.2
 
 IMAPStore die-welt.net-remote
 Account die-welt.net
