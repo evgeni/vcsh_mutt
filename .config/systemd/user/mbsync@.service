@@ -1,10 +1,7 @@
 [Unit]
-Description=Mailbox synchronization service for account %I
+Description=Mailbox synchronization service for account %i
 
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/mbsync %i
-ExecStartPost=/usr/bin/notmuch new
-StandardOutput=syslog
-StandardError=syslog
 TimeoutStartSec=10m
