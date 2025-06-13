@@ -112,13 +112,6 @@ macro index <F6> \
 
 
 set nm_default_uri=notmuch:///home/evgeni/Mail/
-# use goobook (https://gitlab.com/goobook/goobook)
-# available in Debian as goobook
-# available in Fedora as goobook
-
-set query_command="goobook query '%s'"
-bind editor <Tab> complete-query
-macro index,pager a "<pipe-message>goobook add<return>" "add the sender address to Google contacts"
 
 # nicer coloring for diffs
 color body green default "^diff \-.*"
