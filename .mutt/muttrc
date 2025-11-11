@@ -110,6 +110,7 @@ macro index <F6> \
 <enter-command>set pipe_decode=\$my_old_pipe_decode wait_key=\$my_old_wait_key<enter>" \
       "notmuch: remove message from inbox"
 
+bind index \ea next-unread-mailbox
 
 set nm_default_uri=notmuch:///home/evgeni/Mail/
 
