@@ -28,8 +28,10 @@ set beep_new
 
 set pipe_split
 
-set sort=threads
-set sort_aux=last-date-received
+# https://neomutt.org/feature/use-threads
+#set sort=threads
+#set sort_aux=last-date-received
+set use_threads=threads sort=last-date sort_aux=date
 
 set narrow_tree
 
