@@ -1,0 +1,3 @@
+#!/bin/bash
+notmuch tag -inbox -unread +spam folder:muell.spam
+notmuch tag -inbox -unread +spam folder:muell.newspam
