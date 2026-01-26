@@ -114,7 +114,7 @@ macro index <F6> \
 
 bind index \ea next-unread-mailbox
 
-set nm_default_uri=notmuch:///home/evgeni/Mail/
+set nm_default_uri=notmuch:///home/evgeni/.local/share/notmuch/default
 
 # nicer coloring for diffs
 color body green default "^diff \-.*"
