@@ -116,6 +116,13 @@ bind index \ea next-unread-mailbox
 
 set nm_default_uri=notmuch:///home/evgeni/.local/share/notmuch/default
 
+# the first line of the output is used as a status, so we need to fake it
+# the rest should be "mail<tab>name<tab>comment/tags", so we sed a bit
+set query_command="echo 'Searching notmuch'; notmuch address --deduplicate=address from:/%s/ | sed -E 's/(.+) <(.+)>/\\2\\t\\1/'"
+# the default is  "%3i %t %-25N %-25E | %C%> %Y", but notmuch doesn't give any comment/tags,
+# so let's drop the part after the |
+set query_format="%3i %t %-25N %-25E"
+
 # nicer coloring for diffs
 color body green default "^diff \-.*"
 color body green default "^index [a-f0-9].*"
