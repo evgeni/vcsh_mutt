@@ -4,4 +4,5 @@ Description=Mailbox synchronization service for account %i
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/mbsync %i
+ExecStartPost=notmuch new
 TimeoutStartSec=10m
