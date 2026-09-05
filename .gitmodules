@@ -1,0 +1,9 @@
+[submodule ".zsh/grml-etc-core"]
+	path = .zsh/grml-etc-core
+	url = https://github.com/grml/grml-etc-core.git
+[submodule ".zsh/aptituz-zsh"]
+	path = .zsh/aptituz-zsh
+	url = https://github.com/aptituz/zsh.git
+[submodule ".mutt/mutt-colors-solarized"]
+	path = .mutt/mutt-colors-solarized
+	url = https://github.com/altercation/mutt-colors-solarized
